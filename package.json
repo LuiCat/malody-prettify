@@ -3,59 +3,78 @@
     "displayName": "Malody Prettify",
     "description": "Prettify Malody's chart format .mc",
     "version": "0.0.1",
+    "author": {
+        "name": "LuiCat",
+        "url": "https://github.com/LuiCat"
+    },
+    "publisher": "LuiCat",
+    "repository": "github:LuiCat/malody-prettify",
+    "license": "MIT",
     "engines": {
         "vscode": "^1.43.0"
     },
     "categories": [
-		"Programming Languages",
+        "Programming Languages",
         "Formatters"
-	],
+    ],
     "keywords": [
         "malody",
         "chart",
         "json",
         "prettify",
-		"formatter",
-		"mc"
+        "formatter",
+        "mc"
     ],
-	"activationEvents": ["onLanguage:malodychart"],
-	"main": "./out/extension",
+    "activationEvents": [
+        "onLanguage:malodychart"
+    ],
+    "main": "./out/extension",
     "contributes": {
-        "languages": [{
-            "id": "malodychart",
-            "aliases": ["Malody Chart", "malodychart"],
-            "extensions": [".mc",".mce"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "malodychart",
-            "scopeName": "source.malodychart",
-            "path": "./syntaxes/tsx.tmLanguage"
-		}],
+        "languages": [
+            {
+                "id": "malodychart",
+                "aliases": [
+                    "Malody Chart",
+                    "malodychart"
+                ],
+                "extensions": [
+                    ".mc",
+                    ".mce"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "malodychart",
+                "scopeName": "source.malodychart",
+                "path": "./syntaxes/tsx.tmLanguage"
+            }
+        ],
         "commands": [
-			{
-				"command": "malody.prettify",
-				"category": "Malody",
-				"title": "Prettify MC",
-				"enablement": "editorLangId == malodychart"
-			}
-		]
-	},
+            {
+                "command": "malody.prettify",
+                "category": "Malody",
+                "title": "Prettify MC",
+                "enablement": "editorLangId == malodychart"
+            }
+        ]
+    },
     "scripts": {
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
         "postinstall": "node ./node_modules/vscode/bin/install",
-        "package": "npm run compile && vsce package -o json-pretty-printer.vsix --baseContentUrl https://raw.githubusercontent.com/LuiCat/malody-prettify/master/README.md",
+        "package": "npm run compile && vsce package -o malody-prettify.vsix --baseContentUrl https://raw.githubusercontent.com/LuiCat/malody-prettify/master/README.md",
         "publish": "npm run package && vsce publish --baseContentUrl https://raw.githubusercontent.com/LuiCat/malody-prettify/master/README.md"
     },
     "devDependencies": {
-        "typescript": "^3.8.3",
-        "vscode": "^1.43.0",
-        "tslint": "^6.1.0",
-        "@types/node": "^12.8.1"
+        "@types/node": "^12.8.1",
+        "@types/vscode": "^1.43.0",
+        "tslint": "^6.1.1",
+        "typescript": "^3.8.3"
     },
     "dependencies": {
-		"json-to-ast": "^2.1.0"
-	}
+        "json-to-ast": "^2.1.0"
+    }
 }
